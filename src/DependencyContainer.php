@@ -156,7 +156,7 @@ class DependencyContainer extends Field
      * @param $value
      * @return array
      */
-    protected function getFieldLayout($field, $value = null)
+    protected function getFieldLayout($field, $value = null): array
     {
         if (count(($field = explode('.', $field))) === 1) {
             // backwards compatibility, property becomes field
@@ -288,7 +288,7 @@ class DependencyContainer extends Field
      * @param NovaRequest $request
      * @return bool
      */
-    public function areDependenciesSatisfied(NovaRequest $request)
+    public function areDependenciesSatisfied(NovaRequest $request): bool
     {
         if (!isset($this->meta['dependencies'])
             || !is_array($this->meta['dependencies'])) {
@@ -356,7 +356,7 @@ class DependencyContainer extends Field
      * @param string      $methodName
      * @return array
      */
-    protected function getSituationalRulesSet(NovaRequest $request, string $methodName = 'getRules')
+    protected function getSituationalRulesSet(NovaRequest $request, string $methodName = 'getRules'): array
     {
         $fieldsRules = [$this->attribute => []];
 
@@ -418,7 +418,7 @@ class DependencyContainer extends Field
      * @param NovaRequest $request
      * @return array
      */
-    public function getRules(NovaRequest $request)
+    public function getRules(NovaRequest $request): array
     {
         return $this->getSituationalRulesSet($request);
     }
@@ -429,7 +429,7 @@ class DependencyContainer extends Field
      * @param NovaRequest $request
      * @return array|string
      */
-    public function getCreationRules(NovaRequest $request)
+    public function getCreationRules(NovaRequest $request): mixed
     {
         $fieldsRules = $this->getSituationalRulesSet($request, 'getCreationRules');
 
@@ -445,7 +445,7 @@ class DependencyContainer extends Field
      * @param NovaRequest $request
      * @return array
      */
-    public function getUpdateRules(NovaRequest $request)
+    public function getUpdateRules(NovaRequest $request): array
     {
         $fieldsRules = $this->getSituationalRulesSet($request, 'getUpdateRules');
 
